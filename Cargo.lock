@@ -48,6 +48,7 @@ dependencies = [
 [[package]]
 name = "display-link"
 version = "0.2.0"
+source = "git+https://github.com/U32Float/display-link#3b8f06daea9454d77a6c5b0f1a8d126f514723ad"
 dependencies = [
  "foreign-types",
  "objc",
