@@ -34,7 +34,7 @@ struct State {
     /// The time for the next frame in nanoseconds since UNIX_EPOCH.
     next_frame: Option<u128>,
     /// The time a single frame takes in nanoseconds.
-    frame_time: Option<u32>,
+    frame_time: Option<u64>,
 }
 
 #[derive(Clone)]
@@ -60,7 +60,7 @@ impl DisplayLink {
             let next_frame = timestamp_nanos + t.nanos_since_zero as u128;
             let prev = state_clone.read().unwrap().next_frame.clone();
             if let Some(prev) = prev {
-                state_clone.write().unwrap().frame_time = Some((next_frame - prev) as u32)
+                state_clone.write().unwrap().frame_time = Some((next_frame - prev) as u64)
             }
             state_clone.write().unwrap().next_frame = Some(next_frame);
         })
